@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,27 +6,29 @@
 }
 
 :root {
-  --ink: #242424;
-  --muted: #555;
-  --line: #d8d8d8;
+  --ink: #202b38;
+  --muted: #56616d;
+  --accent: #24496b;
+  --line: #dce2e8;
+  --background: #f1f3f5;
 }
 
 body {
-  background: #f1f1f1;
+  background: var(--background);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.38;
-  padding: 28px;
   font-size: 12px;
+  line-height: 1.5;
+  padding: 28px;
 }
 
 .resume {
   width: min(100%, 980px);
   min-height: 1120px;
   margin: 0 auto;
-  background: #fff;
   padding: 42px 44px;
-  box-shadow: 0 3px 18px rgba(0, 0, 0, .09);
+  background: #fff;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, .08);
 }
 
 .header {
@@ -33,67 +36,66 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 25px;
+  margin-bottom: 27px;
+  border-bottom: 2px solid var(--accent);
 }
 
 .name-block h1 {
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 700;
-  letter-spacing: -.3px;
-  margin-bottom: 9px;
+  letter-spacing: -.5px;
+  margin-bottom: 7px;
 }
 
-.age {
-  color: var(--muted);
+.headline {
+  color: var(--accent);
+  font-weight: 700;
   font-size: 12px;
 }
 
 .contact {
+  min-width: 220px;
   text-align: right;
-  min-width: 245px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .contact p {
   margin-bottom: 4px;
 }
 
-.contact .salary {
-  margin-top: 14px;
-}
-
 .columns {
   display: grid;
-  grid-template-columns: 32% 1fr;
+  grid-template-columns: 30% 1fr;
   gap: 34px;
 }
 
 .sidebar {
-  padding-right: 22px;
+  padding-right: 20px;
+  border-right: 1px solid var(--line);
 }
 
 section {
-  margin-bottom: 25px;
+  margin-bottom: 24px;
   break-inside: avoid;
 }
 
 h2 {
+  color: var(--accent);
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 13px;
-  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--line);
 }
 
 p {
-  margin-bottom: 7px;
   color: var(--muted);
-}
-
-.sidebar p,
-.plain-list li {
-  font-size: 12px;
+  margin-bottom: 8px;
+  text-align: justify;
 }
 
 .plain-list {
@@ -101,18 +103,21 @@ p {
 }
 
 .plain-list li {
-  margin-bottom: 5px;
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 8px;
   color: var(--muted);
 }
 
-.skills-list .more {
-  margin-top: 5px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.main-content section {
-  margin-bottom: 24px;
+.plain-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .entry {
@@ -120,37 +125,40 @@ p {
   break-inside: avoid;
 }
 
-.entry:last-child {
-  margin-bottom: 0;
-}
-
 .entry h3 {
   font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.entry p {
-  margin-bottom: 6px;
-  line-height: 1.42;
-}
-
-.entry strong {
   color: var(--ink);
-  font-weight: 700;
+  margin-bottom: 3px;
 }
 
-.status {
+.position {
+  color: var(--accent);
   font-weight: 700;
-  color: var(--ink);
+  margin-bottom: 2px;
 }
 
-.duration,
-.separator {
+.period {
+  color: #7a838d;
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+
+.entry ul {
+  padding-left: 17px;
   color: var(--muted);
 }
 
-.activity-label {
-  margin-top: 11px;
+.entry li {
+  padding-left: 2px;
+  margin-bottom: 4px;
+}
+
+.education p {
+  margin-bottom: 3px;
+}
+
+.education .period {
+  margin-top: 5px;
 }
 
 @media (max-width: 700px) {
@@ -159,7 +167,7 @@ p {
   }
 
   .resume {
-    padding: 25px 20px;
+    padding: 26px 20px;
     min-height: 0;
     box-shadow: none;
   }
@@ -167,6 +175,10 @@ p {
   .header {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .name-block h1 {
+    font-size: 23px;
   }
 
   .contact {
@@ -180,9 +192,10 @@ p {
   }
 
   .sidebar {
-    padding-right: 0;
+    border-right: none;
     border-bottom: 1px solid var(--line);
-    padding-bottom: 8px;
+    padding-right: 0;
+    padding-bottom: 10px;
   }
 }
 
@@ -203,13 +216,13 @@ p {
   .resume {
     width: 100%;
     min-height: 0;
-    padding: 12mm 10mm;
+    padding: 5mm;
     box-shadow: none;
   }
 
   .columns {
-    grid-template-columns: 32% 1fr;
-    gap: 8mm;
+    grid-template-columns: 30% 1fr;
+    gap: 7mm;
   }
 
   section,
